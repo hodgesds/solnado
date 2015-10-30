@@ -12,7 +12,8 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-
+   modules.rst
+   solnado.rst
 
 
 Indices and tables
