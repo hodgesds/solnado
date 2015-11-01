@@ -48,60 +48,83 @@
 <em class="property">class </em><code class="descclassname">solnado.client.</code><code class="descname">SolrClient</code><span class="sig-paren">(</span><em>host='localhost'</em>, <em>port=8983</em>, <em>prefix=''</em>, <em>method='http'</em>, <em>ssl=False</em>, <em>verify_certs=True</em>, <em>ca_certs=''</em>, <em>ioloop=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <dl class="method">
-<dt id="solnado.client.SolrClient.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>docs</em>, <em>boost=None</em>, <em>callback=None</em>, <em>commit=True</em>, <em>commitWithin=None</em>, <em>fieldUpdates=None</em>, <em>softCommit=False</em>, <em>waitFlush=None</em>, <em>waitSearcher=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.add" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="solnado.client.SolrClient.add_configset">
 <code class="descname">add_configset</code><span class="sig-paren">(</span><em>name</em>, <em>base_configset</em>, <em>callback=None</em>, <em>config_kwargs={}</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.add_configset" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/ConfigSets+API">https://cwiki.apache.org/confluence/display/solr/ConfigSets+API</a>
-:arg name:           Name of configset
-:arg base_configset: Name of base configset
-:arg callback:       Callback to run on completion
-:arg config_kwargs:  Additional configuration
-:arg indent:         Indent the response body
-:arg req_kwargs:     Optional tornado HTTPRequest kwargs
-:arg wt:             Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/ConfigSets+API">Configsets</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Name of configset</li>
+<li><strong>base_configset</strong> &#8211; Name of base configset</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>config_kwargs</strong> &#8211; Additional configuration</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.add_copy_field">
 <code class="descname">add_copy_field</code><span class="sig-paren">(</span><em>collection</em>, <em>src</em>, <em>dst</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>maxChars=None</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.add_copy_field" title="Permalink to this definition">¶</a></dt>
-<dd><p>Documentation for
-<a href="#id15"><span class="problematic" id="id16">`adding copy fields&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewCopyFieldRule&gt;`_</span></a>
-:arg collection:   Collection name
-:arg src:          Source field name
-:arg dst:          Destination field name(s)
-:arg callback:     Callback to run on completion
-:arg field_kwargs: Optional field type kwargs
-:arg indent:       Indent the response body
-:arg req_kwargs:   Optional tornado HTTPRequest kwargs
-:arg wt:           Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p>Documentation for <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewCopyFieldRule">adding copy fields</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>src</strong> &#8211; Source field name</li>
+<li><strong>dst</strong> &#8211; Destination field name(s)</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>field_kwargs</strong> &#8211; Optional field type kwargs</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.add_dynamic_field">
 <code class="descname">add_dynamic_field</code><span class="sig-paren">(</span><em>collection</em>, <em>name</em>, <em>field_type</em>, <em>callback=None</em>, <em>field_kwargs={}</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.add_dynamic_field" title="Permalink to this definition">¶</a></dt>
-<dd><p>For more information on <a href="#id17"><span class="problematic" id="id18">`field types&lt;https://cwiki.apache.org/confluence/display/solr/Defining+Fields&gt;`_</span></a>.
-Documentation for
-<a href="#id19"><span class="problematic" id="id20">`adding new dynamic fields&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaDynamicFieldRule&gt;`_</span></a>
-:arg collection:   Collection name
-:arg name:         The name of the field
-:arg field_type:   Field type
-:arg callback:     Callback to run on completion
-:arg field_kwargs: Optional field type kwargs
-:arg indent:       Indent the response body
-:arg req_kwargs:   Optional tornado HTTPRequest kwargs
-:arg wt:           Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p>For more information on <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Defining+Fields">field types</a>.
+Documentation for <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaDynamicFieldRule">adding new dynamic fields</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>name</strong> &#8211; The name of the field</li>
+<li><strong>field_type</strong> &#8211; Field type</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>field_kwargs</strong> &#8211; Optional field type kwargs</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.add_field">
 <code class="descname">add_field</code><span class="sig-paren">(</span><em>collection</em>, <em>name</em>, <em>field_type</em>, <em>callback=None</em>, <em>field_kwargs={}</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.add_field" title="Permalink to this definition">¶</a></dt>
-<dd><p>For more information on <a href="#id21"><span class="problematic" id="id22">`field types&lt;https://cwiki.apache.org/confluence/display/solr/Defining+Fields&gt;`_</span></a>.
+<dd><p>For more information on <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Defining+Fields">field types</a>.
 Documentation for
-<a href="#id23"><span class="problematic" id="id24">`adding new fields&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewField&gt;`_</span></a></p>
+<a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewField">adding new fields</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -125,146 +148,384 @@ Documentation for
 <dl class="method">
 <dt id="solnado.client.SolrClient.add_field_type">
 <code class="descname">add_field_type</code><span class="sig-paren">(</span><em>collection</em>, <em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>field_kwargs={}</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.add_field_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Documentation for
-<a href="#id25"><span class="problematic" id="id26">`adding new field type&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewFieldType&gt;`_</span></a>
-:arg collection:   Collection name
-:arg name:         The name of the field
-:arg callback:     Callback to run on completion
-:arg field_kwargs: Optional field type kwargs
-:arg indent:       Indent the response body
-:arg req_kwargs:   Optional tornado HTTPRequest kwargs
-:arg wt:           Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p>Documentation for <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewFieldType">adding new field type</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>name</strong> &#8211; The name of the field</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>field_kwargs</strong> &#8211; Optional field type kwargs</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.add_json_document">
 <code class="descname">add_json_document</code><span class="sig-paren">(</span><em>collection</em>, <em>doc</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.add_json_document" title="Permalink to this definition">¶</a></dt>
-<dd><p><a href="#id27"><span class="problematic" id="id28">`json api&lt;https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates&gt;`_</span></a>
-:arg collection: The name of the collection
-:arg doc:        Dictionary to be uploaded
-:arg callback:   Callback to run on completion
-:arg indent:     Indent the response body
-:arg req_kwargs: Optional tornado HTTPRequest kwargs
-:arg wt:         Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates">json api</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; The name of the collection</li>
+<li><strong>doc</strong> &#8211; Dictionary to be uploaded</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.add_json_documents">
 <code class="descname">add_json_documents</code><span class="sig-paren">(</span><em>collection</em>, <em>docs</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.add_json_documents" title="Permalink to this definition">¶</a></dt>
-<dd><p><a href="#id29"><span class="problematic" id="id30">`json api&lt;https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates&gt;`_</span></a>
-:arg collection: The name of the collection
-:arg docs:       Dictionary to be uploaded
-:arg callback:   Callback to run on completion
-:arg indent:     Indent the response body
-:arg req_kwargs: Optional tornado HTTPRequest kwargs
-:arg wt:         Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates">json api</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; The name of the collection</li>
+<li><strong>docs</strong> &#8211; Dictionary to be uploaded</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.alias_collection">
 <code class="descname">alias_collection</code><span class="sig-paren">(</span><em>collections</em>, <em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.alias_collection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1</a>
-:arg name:       Name of alias
-:arg collection: Collection(s) to alias
-:arg callback:   Callback to run on completion
-:arg indent:     Indent the response body
-:arg req_kwargs: Optional tornado HTTPRequest kwargs
-:arg wt:         Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">Alias Collection</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Name of alias</li>
+<li><strong>collection</strong> &#8211; Collection(s) to alias</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="solnado.client.SolrClient.commit">
-<code class="descname">commit</code><span class="sig-paren">(</span><em>expungeDeletes=None</em>, <em>softCommit=False</em>, <em>waitFlush=None</em>, <em>waitSearcher=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.commit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="solnado.client.SolrClient.core_create">
+<code class="descname">core_create</code><span class="sig-paren">(</span><em>name</em>, <em>callback=None</em>, <em>config='solrconfig.xml'</em>, <em>indent='off'</em>, <em>instance_dir=None</em>, <em>req_kwargs={}</em>, <em>schema='schema.xml'</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.core_create" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-CREATE">create</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; The name of the core</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>config</strong> &#8211; Configuration file to use</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
-<dt id="solnado.client.SolrClient.create">
-<code class="descname">create</code><span class="sig-paren">(</span><em>name</em>, <em>callback=None</em>, <em>config='solrconfig.xml'</em>, <em>instance_dir=None</em>, <em>schema='schema.xml'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.create" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="solnado.client.SolrClient.core_reload">
+<code class="descname">core_reload</code><span class="sig-paren">(</span><em>core</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.core_reload" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-RELOAD">reload</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>core</strong> &#8211; Core to reload</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>name</strong> &#8211; The name of the core</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="solnado.client.SolrClient.core_rename">
+<code class="descname">core_rename</code><span class="sig-paren">(</span><em>core</em>, <em>other</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.core_rename" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-RENAME">rename</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>core</strong> &#8211; Core to be renamed</li>
+<li><strong>other</strong> &#8211; Other name for core</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>name</strong> &#8211; The name of the core</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="solnado.client.SolrClient.core_status">
+<code class="descname">core_status</code><span class="sig-paren">(</span><em>callback=None</em>, <em>core=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.core_status" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-STATUS">status</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>core</strong> &#8211; The name of the core</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="solnado.client.SolrClient.core_swap">
+<code class="descname">core_swap</code><span class="sig-paren">(</span><em>core</em>, <em>other</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.core_swap" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-SWAP">swap</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>core</strong> &#8211; Core to be renamed</li>
+<li><strong>other</strong> &#8211; Other name for core</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>name</strong> &#8211; The name of the core</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="solnado.client.SolrClient.core_unload">
+<code class="descname">core_unload</code><span class="sig-paren">(</span><em>core</em>, <em>callback=None</em>, <em>del_index=None</em>, <em>del_data_dir=None</em>, <em>del_inst_dir=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.core_unload" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-UNLOAD">unload</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>core</strong> &#8211; Core to remove</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>del_index</strong> &#8211; Remove index</li>
+<li><strong>del_data_dir</strong> &#8211; Remove data directory and subdirectories</li>
+<li><strong>del_inst_dir</strong> &#8211; Remove everything related to core</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>name</strong> &#8211; The name of the core</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.create_collection">
 <code class="descname">create_collection</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>collection_kwargs={}</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.create_collection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1</a>
-:arg collection:        Collection name
-:arg collection_kwargs: Collection kwargs
-:arg callback:          Callback to run on completion
-:arg indent:            Indent the response body
-:arg req_kwargs:        Optional tornado HTTPRequest kwargs
-:arg wt:                Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">Create Collection</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>collection_kwargs</strong> &#8211; Collection kwargs</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><em>callback=None</em>, <em>commit=True</em>, <em>doc_id=None</em>, <em>q=None</em>, <em>waitFlush=None</em>, <em>waitSearcher=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descname">delete</code><span class="sig-paren">(</span><em>collection</em>, <em>docs</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; The name of the collection</li>
+<li><strong>docs</strong> &#8211; Document id(s) to delete</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.delete_alias_collection">
 <code class="descname">delete_alias_collection</code><span class="sig-paren">(</span><em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete_alias_collection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1</a>
-:arg name:       Name of alias
-:arg callback:   Callback to run on completion
-:arg indent:     Indent the response body
-:arg req_kwargs: Optional tornado HTTPRequest kwargs
-:arg wt:         Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">Delete Alias Collection</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Name of alias</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.delete_collection">
 <code class="descname">delete_collection</code><span class="sig-paren">(</span><em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete_collection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1</a>
-:arg name:       Name of alias
-:arg callback:   Callback to run on completion
-:arg indent:     Indent the response body
-:arg req_kwargs: Optional tornado HTTPRequest kwargs
-:arg wt:         Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">Delete Collection</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Name of alias</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.delete_configset">
 <code class="descname">delete_configset</code><span class="sig-paren">(</span><em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete_configset" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/ConfigSets+API">https://cwiki.apache.org/confluence/display/solr/ConfigSets+API</a>
-:arg name:           Name of configset
-:arg callback:       Callback to run on completion
-:arg indent:         Indent the response body
-:arg req_kwargs:     Optional tornado HTTPRequest kwargs
-:arg wt:             Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/ConfigSets+API">Configsets</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Name of configset</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.delete_copy_field">
 <code class="descname">delete_copy_field</code><span class="sig-paren">(</span><em>collection</em>, <em>src</em>, <em>dst</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>maxChars=None</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete_copy_field" title="Permalink to this definition">¶</a></dt>
-<dd><p>Documentation for
-<a href="#id31"><span class="problematic" id="id32">`deleting a copy field&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaCopyFieldRule&gt;`_</span></a>
-:arg collection:   Collection name
-:arg src:          Source field name
-:arg dst:          Destination field name(s)
-:arg callback:     Callback to run on completion
-:arg field_kwargs: Optional field type kwargs
-:arg indent:       Indent the response body
-:arg req_kwargs:   Optional tornado HTTPRequest kwargs
-:arg wt:           Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p>Documentation for <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaCopyFieldRule">deleting a copy field</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>src</strong> &#8211; Source field name</li>
+<li><strong>dst</strong> &#8211; Destination field name(s)</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>field_kwargs</strong> &#8211; Optional field type kwargs</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.delete_dynamic_field">
 <code class="descname">delete_dynamic_field</code><span class="sig-paren">(</span><em>collection</em>, <em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete_dynamic_field" title="Permalink to this definition">¶</a></dt>
-<dd><p>Documentation for
-<a href="#id33"><span class="problematic" id="id34">`deleting dynamic fields&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaDynamicFieldRule&gt;`_</span></a>
-:arg collection:   Collection name
-:arg name:         The name of the field
-:arg callback:     Callback to run on completion
-:arg indent:       Indent the response body
-:arg req_kwargs:   Optional tornado HTTPRequest kwargs
-:arg wt:           Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p>Documentation for <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaDynamicFieldRule">deleting dynamic fields</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>name</strong> &#8211; The name of the field</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.delete_field">
 <code class="descname">delete_field</code><span class="sig-paren">(</span><em>collection</em>, <em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete_field" title="Permalink to this definition">¶</a></dt>
-<dd><p>Documentation for
-<a href="#id35"><span class="problematic" id="id36">`deleting fields&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaField&gt;`_</span></a></p>
+<dd><p>Documentation for <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaField">deleting fields</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -286,67 +547,96 @@ Documentation for
 <dl class="method">
 <dt id="solnado.client.SolrClient.delete_field_type">
 <code class="descname">delete_field_type</code><span class="sig-paren">(</span><em>collection</em>, <em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete_field_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Documentation for
-<a href="#id37"><span class="problematic" id="id38">`deleting field types&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaFieldType&gt;`_</span></a>
-:arg collection:   Collection name
-:arg name:         The name of the field
-:arg callback:     Callback to run on completion
-:arg indent:       Indent the response body
-:arg req_kwargs:   Optional tornado HTTPRequest kwargs
-:arg wt:           Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p>Documentation for <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaFieldType">deleting field types</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>name</strong> &#8211; The name of the field</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.delete_replica_collection">
 <code class="descname">delete_replica_collection</code><span class="sig-paren">(</span><em>collection</em>, <em>shard</em>, <em>replica</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete_replica_collection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1</a>
-:arg collection: Name of collection
-:arg shard:      Shard id
-:arg replica:    Replica to be removed
-:arg callback:   Callback to run on completion
-:arg indent:     Indent the response body
-:arg req_kwargs: Optional tornado HTTPRequest kwargs
-:arg wt:         Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">Delete Replica Collection</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Name of collection</li>
+<li><strong>shard</strong> &#8211; Shard id</li>
+<li><strong>replica</strong> &#8211; Replica to be removed</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.delete_shard_collection">
 <code class="descname">delete_shard_collection</code><span class="sig-paren">(</span><em>collection</em>, <em>shard</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.delete_shard_collection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1</a>
-:arg collection: Collection name
-:arg shard:      Shard id
-:arg callback:   Callback to run on completion
-:arg indent:     Indent the response body
-:arg req_kwargs: Optional tornado HTTPRequest kwargs
-:arg wt:         Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">Delete Shard Collection</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>shard</strong> &#8211; Shard id</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
-
-<dl class="method">
-<dt id="solnado.client.SolrClient.extract">
-<code class="descname">extract</code><span class="sig-paren">(</span><em>file_obj</em>, <em>extractOnly=True</em>, <em>callback=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.extract" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.list_configset">
 <code class="descname">list_configset</code><span class="sig-paren">(</span><em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.list_configset" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/ConfigSets+API">https://cwiki.apache.org/confluence/display/solr/ConfigSets+API</a>
-:arg callback:       Callback to run on completion
-:arg indent:         Indent the response body
-:arg req_kwargs:     Optional tornado HTTPRequest kwargs
-:arg wt:             Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/ConfigSets+API">Configsets</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
-
-<dl class="method">
-<dt id="solnado.client.SolrClient.load">
-<code class="descname">load</code><span class="sig-paren">(</span><em>core</em>, <em>callback=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.load" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.mk_req">
 <code class="descname">mk_req</code><span class="sig-paren">(</span><em>url</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.mk_req" title="Permalink to this definition">¶</a></dt>
 <dd><p>Helper function to create a tornado HTTPRequest object, kwargs get passed in to
 create the HTTPRequest object. See:
-<a class="reference external" href="http://tornado.readthedocs.org/en/latest/httpclient.html#request-objects">http://tornado.readthedocs.org/en/latest/httpclient.html#request-objects</a></p>
+<a class="reference external" href="http://tornado.readthedocs.org/en/latest/httpclient.html#request-objects">Request Object</a></p>
 </dd></dl>
 
 <dl class="method">
@@ -354,69 +644,82 @@ create the HTTPRequest object. See:
 <code class="descname">mk_url</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.mk_url" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
 <dt>Args get parameterized into base url:</dt>
-<dd><a href="#id8"><span class="problematic" id="id9">*</span></a>(foo, bar, baz) -&gt; /foo/bar/baz</dd>
+<dd><a href="#id5"><span class="problematic" id="id6">*</span></a>(foo, bar, baz) -&gt; /foo/bar/baz</dd>
 <dt>Kwargs get encoded and appended to base url:</dt>
-<dd><a href="#id10"><span class="problematic" id="id11">**</span></a>{&#8216;hello&#8217;:&#8217;world&#8217;} -&gt; /foo/bar/baz?hello=world</dd>
+<dd><a href="#id7"><span class="problematic" id="id8">**</span></a>{&#8216;hello&#8217;:&#8217;world&#8217;} -&gt; /foo/bar/baz?hello=world</dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
-<dt id="solnado.client.SolrClient.optimize">
-<code class="descname">optimize</code><span class="sig-paren">(</span><em>callback=None</em>, <em>maxSegments=None</em>, <em>waitFlush=None</em>, <em>waitSearcher=None</em>, <em>**kwarg</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.optimize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="solnado.client.SolrClient.query">
 <code class="descname">query</code><span class="sig-paren">(</span><em>collection</em>, <em>q</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.query" title="Permalink to this definition">¶</a></dt>
-<dd><p><a href="#id39"><span class="problematic" id="id40">`Request api&lt;https://cwiki.apache.org/confluence/display/solr/JSON+Request+API&gt;`_</span></a>
-:arg collection: The name of the collection
-:arg q:          Query dictionary
-:arg callback:   Callback to run on completion
-:arg indent:     Indent the response body
-:arg req_kwargs: Optional tornado HTTPRequest kwargs
-:arg wt:         Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/JSON+Request+API">Request api</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; The name of the collection</li>
+<li><strong>q</strong> &#8211; Query dictionary</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
-
-<dl class="method">
-<dt id="solnado.client.SolrClient.reload">
-<code class="descname">reload</code><span class="sig-paren">(</span><em>core</em>, <em>callback=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.reload" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.reload_collection">
 <code class="descname">reload_collection</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.reload_collection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1</a>
-:arg collection: Collection name
-:arg callback:   Callback to run on completion
-:arg indent:     Indent the response body
-:arg req_kwargs: Optional tornado HTTPRequest kwargs
-:arg wt:         Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">Reload Collection</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
-
-<dl class="method">
-<dt id="solnado.client.SolrClient.rename">
-<code class="descname">rename</code><span class="sig-paren">(</span><em>core</em>, <em>other</em>, <em>callback=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.rename" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.replace_dynamic_field">
 <code class="descname">replace_dynamic_field</code><span class="sig-paren">(</span><em>collection</em>, <em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>field_kwargs={}</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.replace_dynamic_field" title="Permalink to this definition">¶</a></dt>
-<dd><p>Documentation for
-<a href="#id41"><span class="problematic" id="id42">`replacing dynamic fields&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaDynamicFieldRule&gt;`_</span></a>
-:arg collection:   Collection name
-:arg name:         The name of the field
-:arg callback:     Callback to run on completion
-:arg field_kwargs: Optional field type kwargs
-:arg indent:       Indent the response body
-:arg req_kwargs:   Optional tornado HTTPRequest kwargs
-:arg wt:           Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p>Documentation for <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaDynamicFieldRule">replacing dynamic fields</a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>name</strong> &#8211; The name of the field</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>field_kwargs</strong> &#8211; Optional field type kwargs</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.replace_field">
 <code class="descname">replace_field</code><span class="sig-paren">(</span><em>collection</em>, <em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>field_kwargs={}</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.replace_field" title="Permalink to this definition">¶</a></dt>
-<dd><p>Documentation for
-<a href="#id43"><span class="problematic" id="id44">`replacing fields&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaField&gt;`_</span></a></p>
+<dd><p>Documentation for <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaField">replacing fields</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -439,21 +742,30 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.replace_field_type">
 <code class="descname">replace_field_type</code><span class="sig-paren">(</span><em>collection</em>, <em>name</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>field_kwargs={}</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.replace_field_type" title="Permalink to this definition">¶</a></dt>
-<dd><p>Documentation for
-<a href="#id45"><span class="problematic" id="id46">`replacing field types&lt;https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaFieldType&gt;`_</span></a>
-:arg collection:   Collection name
-:arg name:         The name of the field
-:arg callback:     Callback to run on completion
-:arg field_kwargs: Optional field type kwargs
-:arg indent:       Indent the response body
-:arg req_kwargs:   Optional tornado HTTPRequest kwargs
-:arg wt:           Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p>Documentation for <a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaFieldType">replacing field types</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>name</strong> &#8211; The name of the field</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>field_kwargs</strong> &#8211; Optional field type kwargs</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.schema">
 <code class="descname">schema</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.schema" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API">https://cwiki.apache.org/confluence/display/solr/Schema+API</a></p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API">Schema</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -474,7 +786,7 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.schema_copy_fields">
 <code class="descname">schema_copy_fields</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.schema_copy_fields" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListCopyFields">https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListCopyFields</a></p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListCopyFields">Schema Copy Fields</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -495,7 +807,7 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.schema_default_operator">
 <code class="descname">schema_default_operator</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.schema_default_operator" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-GettheDefaultQueryOperator">https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-GettheDefaultQueryOperator</a></p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-GettheDefaultQueryOperator">Schema Default Operator</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -516,7 +828,7 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.schema_dynamic_fields">
 <code class="descname">schema_dynamic_fields</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>field=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.schema_dynamic_fields" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListDynamicFields">https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListDynamicFields</a></p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListDynamicFields">Schema Dyanmic Fields</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -538,7 +850,7 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.schema_field_types">
 <code class="descname">schema_field_types</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>field=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.schema_field_types" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListFieldTypes">https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListFieldTypes</a></p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListFieldTypes">Schema Field Types</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -560,7 +872,7 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.schema_fields">
 <code class="descname">schema_fields</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>field=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.schema_fields" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListFields">https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListFields</a></p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListFields">Schema Fields</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -582,7 +894,7 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.schema_name">
 <code class="descname">schema_name</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.schema_name" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowSchemaName">https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowSchemaName</a></p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowSchemaName">Schema Name</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -603,7 +915,7 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.schema_similarity">
 <code class="descname">schema_similarity</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.schema_similarity" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowGlobalSimilarity">https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowGlobalSimilarity</a></p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowGlobalSimilarity">Schema Similarity</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -624,7 +936,7 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.schema_unique_key">
 <code class="descname">schema_unique_key</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.schema_unique_key" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListUniqueKey">https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListUniqueKey</a></p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListUniqueKey">Schema Unique Keys</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -645,7 +957,7 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.schema_version">
 <code class="descname">schema_version</code><span class="sig-paren">(</span><em>collection</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.schema_version" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowtheSchemaVersion">https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowtheSchemaVersion</a></p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowtheSchemaVersion">Schema Version</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -666,50 +978,70 @@ create the HTTPRequest object. See:
 <dl class="method">
 <dt id="solnado.client.SolrClient.shard_collection">
 <code class="descname">shard_collection</code><span class="sig-paren">(</span><em>collection</em>, <em>shard</em>, <em>callback=None</em>, <em>shard_kwargs={}</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.shard_collection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1</a>
-:arg collection:   Collection name
-:arg shard:        Shard id
-:arg shard_kwargs: Shard kwargs
-:arg callback:     Callback to run on completion
-:arg indent:       Indent the response body
-:arg req_kwargs:   Optional tornado HTTPRequest kwargs
-:arg wt:           Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">Shard Collection</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>shard</strong> &#8211; Shard id</li>
+<li><strong>shard_kwargs</strong> &#8211; Shard kwargs</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="solnado.client.SolrClient.split_shard_collection">
 <code class="descname">split_shard_collection</code><span class="sig-paren">(</span><em>collection</em>, <em>shard</em>, <em>callback=None</em>, <em>shard_kwargs={}</em>, <em>indent='off'</em>, <em>request_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.split_shard_collection" title="Permalink to this definition">¶</a></dt>
-<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1</a>
-:arg collection:   Collection name
-:arg shard:        Shard id
-:arg shard_kwargs: Shard kwargs
-:arg callback:     Callback to run on completion
-:arg indent:       Indent the response body
-:arg req_kwargs:   Optional tornado HTTPRequest kwargs
-:arg wt:           Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1">Split Shard</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; Collection name</li>
+<li><strong>shard</strong> &#8211; Shard id</li>
+<li><strong>shard_kwargs</strong> &#8211; Shard kwargs</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="solnado.client.SolrClient.status">
-<code class="descname">status</code><span class="sig-paren">(</span><em>core=None</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.status" title="Permalink to this definition">¶</a></dt>
-<dd><p><a href="#id47"><span class="problematic" id="id48">`status&lt;https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-STATUS&gt;`_</span></a>
-:arg core:       The name of the core
-:arg docs:       Dictionary to be uploaded
-:arg callback:   Callback to run on completion
-:arg indent:     Indent the response body
-:arg req_kwargs: Optional tornado HTTPRequest kwargs
-:arg wt:         Response format: &#8216;json&#8217; or &#8216;xml&#8217;</p>
+<dt id="solnado.client.SolrClient.update_json">
+<code class="descname">update_json</code><span class="sig-paren">(</span><em>collection</em>, <em>upjson</em>, <em>callback=None</em>, <em>indent='off'</em>, <em>req_kwargs={}</em>, <em>wt='json'</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.update_json" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates">json api</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>collection</strong> &#8211; The name of the collection</li>
+<li><strong>upjson</strong> &#8211; Json to be posted</li>
+<li><strong>callback</strong> &#8211; Callback to run on completion</li>
+<li><strong>indent</strong> &#8211; Indent the response body</li>
+<li><strong>req_kwargs</strong> &#8211; Optional tornado HTTPRequest kwargs</li>
+<li><strong>wt</strong> &#8211; Response format: &#8216;json&#8217; or &#8216;xml&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
-
-<dl class="method">
-<dt id="solnado.client.SolrClient.swap">
-<code class="descname">swap</code><span class="sig-paren">(</span><em>core</em>, <em>other</em>, <em>callback=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.swap" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="solnado.client.SolrClient.unload">
-<code class="descname">unload</code><span class="sig-paren">(</span><em>core</em>, <em>callback=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#solnado.client.SolrClient.unload" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
