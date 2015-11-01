@@ -7,6 +7,6 @@ def cb(reply):
     print reply.body
     ioloop.IOLoop.instance().stop()
 
-c.status(callback=cb)
+c.core_status(callback=cb)
 
 ioloop.IOLoop.instance().start()

@@ -4,11 +4,11 @@ from setuptools import setup, find_packages
 import sys
 import os
 
-VERSION = (0, 8, 5)
+VERSION = (0, 8, 6)
 __version__ = VERSION
 __versionstr__ = '.'.join(map(str, VERSION))
 
-f = open(join(dirname(__file__), 'Readme.md'))
+f = open(join(dirname(__file__), 'README.rst'))
 long_description = f.read().strip()
 f.close()
 
