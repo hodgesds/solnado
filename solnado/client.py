@@ -36,7 +36,7 @@ class SolrClient(object):
         """
         Helper function to create a tornado HTTPRequest object, kwargs get passed in to
         create the HTTPRequest object. See:
-        `Request Object <http://tornado.readthedocs.org/en/latest/httpclient.html#request-objects>`_.
+        `Request Object <http://tornado.readthedocs.org/en/latest/httpclient.html#request-objects>`_
         """
         req_url = self.base_url + url
         req_kwargs = kwargs
@@ -84,6 +84,7 @@ class SolrClient(object):
 
         """
         `Request api <https://cwiki.apache.org/confluence/display/solr/JSON+Request+API>`_
+
         :arg collection: The name of the collection
         :arg q:          Query dictionary
         :arg callback:   Callback to run on completion
@@ -111,6 +112,7 @@ class SolrClient(object):
     ):
         """
         `json api <https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates>`_
+
         :arg collection: The name of the collection
         :arg doc:        Dictionary to be uploaded
         :arg callback:   Callback to run on completion
@@ -136,6 +138,7 @@ class SolrClient(object):
     ):
         """
         `json api <https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates>`_
+
         :arg collection: The name of the collection
         :arg docs:       Dictionary to be uploaded
         :arg callback:   Callback to run on completion
@@ -156,6 +159,7 @@ class SolrClient(object):
     ):
         """
         `json api <https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates>`_
+
         :arg collection: The name of the collection
         :arg upjson:     Json to be posted
         :arg callback:   Callback to run on completion
@@ -196,6 +200,7 @@ class SolrClient(object):
     ):
         """
         `status <https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-STATUS>`_
+
         :arg callback:   Callback to run on completion
         :arg core:       The name of the core
         :arg indent:     Indent the response body
@@ -225,6 +230,7 @@ class SolrClient(object):
     ):
         """
         `create <https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-CREATE>`_
+
         :arg name:       The name of the core
         :arg callback:   Callback to run on completion
         :arg config:     Configuration file to use
@@ -260,6 +266,7 @@ class SolrClient(object):
     ):
         """
         `reload <https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-RELOAD>`_
+
         :arg core:       Core to reload
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -290,6 +297,7 @@ class SolrClient(object):
     ):
         """
         `rename <https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-RENAME>`_
+
         :arg core:       Core to be renamed
         :arg other:      Other name for core
         :arg callback:   Callback to run on completion
@@ -311,7 +319,7 @@ class SolrClient(object):
 
         self.client.fetch(request, callback = callback)
 
-    def cor_swap(self,
+    def core_swap(self,
         core,
         other,
         callback     = None,
@@ -321,6 +329,7 @@ class SolrClient(object):
     ):
         """
         `swap <https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-SWAP>`_
+
         :arg core:       Core to be renamed
         :arg other:      Other name for core
         :arg callback:   Callback to run on completion
@@ -354,6 +363,7 @@ class SolrClient(object):
     ):
         """
         `unload <https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-UNLOAD>`_
+
         :arg core:         Core to remove
         :arg callback:     Callback to run on completion
         :arg del_index:    Remove index
@@ -399,6 +409,7 @@ class SolrClient(object):
     ):
         """
         `Configsets <https://cwiki.apache.org/confluence/display/solr/ConfigSets+API>`_
+
         :arg name:           Name of configset
         :arg base_configset: Name of base configset
         :arg callback:       Callback to run on completion
@@ -430,6 +441,7 @@ class SolrClient(object):
     ):
         """
         `Configsets <https://cwiki.apache.org/confluence/display/solr/ConfigSets+API>`_
+
         :arg name:       Name of configset
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -457,6 +469,7 @@ class SolrClient(object):
     ):
         """
         `Configsets <https://cwiki.apache.org/confluence/display/solr/ConfigSets+API>`_
+
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
         :arg req_kwargs: Optional tornado HTTPRequest kwargs
@@ -483,6 +496,7 @@ class SolrClient(object):
     ):
         """
         `Schema <https://cwiki.apache.org/confluence/display/solr/Schema+API>`_
+
         :arg collection: The name of the collection
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -509,6 +523,7 @@ class SolrClient(object):
     ):
         """
         `Schema Fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListFields>`_
+
         :arg collection: The name of the collection
         :arg callback:   Callback to run on completion
         :arg field:      Limit results to specific field
@@ -534,6 +549,7 @@ class SolrClient(object):
     ):
         """
         `Schema Dyanmic Fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListDynamicFields>`_
+
         :arg collection: The name of the collection
         :arg callback:   Callback to run on completion
         :arg field:      Limit results to specific field
@@ -559,6 +575,7 @@ class SolrClient(object):
     ):
         """
         `Schema Field Types <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListFieldTypes>`_
+
         :arg collection: The name of the collection
         :arg callback:   Callback to run on completion
         :arg field:      Limit results to specific field
@@ -583,6 +600,7 @@ class SolrClient(object):
     ):
         """
         `Schema Copy Fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListCopyFields>`_
+
         :arg collection: The name of the collection
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -606,6 +624,7 @@ class SolrClient(object):
     ):
         """
         `Schema Name <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowSchemaName>`_
+
         :arg collection: The name of the collection
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -629,6 +648,7 @@ class SolrClient(object):
     ):
         """
         `Schema Version <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowtheSchemaVersion>`_
+
         :arg collection: The name of the collection
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -652,6 +672,7 @@ class SolrClient(object):
     ):
         """
         `Schema Unique Keys <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ListUniqueKey>`_
+
         :arg collection: The name of the collection
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -675,6 +696,7 @@ class SolrClient(object):
     ):
         """
         `Schema Similarity <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ShowGlobalSimilarity>`_
+
         :arg collection: The name of the collection
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -698,6 +720,7 @@ class SolrClient(object):
     ):
         """
         `Schema Default Operator <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-GettheDefaultQueryOperator>`_.
+
         :arg collection: The name of the collection
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -726,6 +749,7 @@ class SolrClient(object):
         For more information on `field types <https://cwiki.apache.org/confluence/display/solr/Defining+Fields>`_.
         Documentation for
         `adding new fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewField>`_.
+
         :arg collection:   Collection name
         :arg name:         The name of the field
         :arg field_type:   Field type
@@ -759,8 +783,8 @@ class SolrClient(object):
         wt             = 'json'
     ):
         """
-        Documentation for
-        `deleting fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaField>`_
+        Documentation for `deleting fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaField>`_
+
         :arg collection:   Collection name
         :arg name:         The name of the field
         :arg callback:     Callback to run on completion
@@ -787,8 +811,8 @@ class SolrClient(object):
         wt             = 'json'
     ):
         """
-        Documentation for
-        `replacing fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaField>`_
+        Documentation for `replacing fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaField>`_
+
         :arg collection:   Collection name
         :arg name:         The name of the field
         :arg callback:     Callback to run on completion
@@ -824,8 +848,8 @@ class SolrClient(object):
     ):
         """
         For more information on `field types <https://cwiki.apache.org/confluence/display/solr/Defining+Fields>`_.
-        Documentation for
-        `adding new dynamic fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaDynamicFieldRule>`_
+        Documentation for `adding new dynamic fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaDynamicFieldRule>`_
+
         :arg collection:   Collection name
         :arg name:         The name of the field
         :arg field_type:   Field type
@@ -859,8 +883,8 @@ class SolrClient(object):
         wt             = 'json'
     ):
         """
-        Documentation for
-        `deleting dynamic fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaDynamicFieldRule>`_
+        Documentation for `deleting dynamic fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaDynamicFieldRule>`_
+
         :arg collection:   Collection name
         :arg name:         The name of the field
         :arg callback:     Callback to run on completion
@@ -887,8 +911,8 @@ class SolrClient(object):
         wt             = 'json'
     ):
         """
-        Documentation for
-        `replacing dynamic fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaDynamicFieldRule>`_
+        Documentation for `replacing dynamic fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaDynamicFieldRule>`_.
+
         :arg collection:   Collection name
         :arg name:         The name of the field
         :arg callback:     Callback to run on completion
@@ -922,8 +946,8 @@ class SolrClient(object):
         wt             = 'json'
     ):
         """
-        Documentation for
-        `adding new field type <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewFieldType>`_
+        Documentation for `adding new field type <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewFieldType>`_.
+
         :arg collection:   Collection name
         :arg name:         The name of the field
         :arg callback:     Callback to run on completion
@@ -956,8 +980,8 @@ class SolrClient(object):
         wt             = 'json'
     ):
         """
-        Documentation for
-        `deleting field types <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaFieldType>`_
+        Documentation for `deleting field types <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaFieldType>`_
+
         :arg collection:   Collection name
         :arg name:         The name of the field
         :arg callback:     Callback to run on completion
@@ -984,8 +1008,8 @@ class SolrClient(object):
         wt             = 'json'
     ):
         """
-        Documentation for
-        `replacing field types <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaFieldType>`_
+        Documentation for `replacing field types <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaFieldType>`_
+
         :arg collection:   Collection name
         :arg name:         The name of the field
         :arg callback:     Callback to run on completion
@@ -1020,8 +1044,8 @@ class SolrClient(object):
         wt             = 'json'
     ):
         """
-        Documentation for
-        `adding copy fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewCopyFieldRule>`_
+        Documentation for `adding copy fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewCopyFieldRule>`_
+
         :arg collection:   Collection name
         :arg src:          Source field name
         :arg dst:          Destination field name(s)
@@ -1057,8 +1081,8 @@ class SolrClient(object):
         wt             = 'json'
     ):
         """
-        Documentation for
-        `deleting a copy field <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaCopyFieldRule>`_
+        Documentation for `deleting a copy field <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaCopyFieldRule>`_
+
         :arg collection:   Collection name
         :arg src:          Source field name
         :arg dst:          Destination field name(s)
@@ -1093,6 +1117,7 @@ class SolrClient(object):
     ):
         """
         `Create Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
+
         :arg collection:        Collection name
         :arg collection_kwargs: Collection kwargs
         :arg callback:          Callback to run on completion
@@ -1123,6 +1148,7 @@ class SolrClient(object):
     ):
         """
         `Reload Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
+
         :arg collection: Collection name
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -1155,6 +1181,7 @@ class SolrClient(object):
     ):
         """
         `Split Shard <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
+
         :arg collection:   Collection name
         :arg shard:        Shard id
         :arg shard_kwargs: Shard kwargs
@@ -1190,6 +1217,7 @@ class SolrClient(object):
     ):
         """
         `Shard Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
+
         :arg collection:   Collection name
         :arg shard:        Shard id
         :arg shard_kwargs: Shard kwargs
@@ -1224,6 +1252,7 @@ class SolrClient(object):
     ):
         """
         `Delete Shard Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
+
         :arg collection: Collection name
         :arg shard:      Shard id
         :arg callback:   Callback to run on completion
@@ -1257,6 +1286,7 @@ class SolrClient(object):
     ):
         """
         `Alias Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
+
         :arg name:       Name of alias
         :arg collection: Collection(s) to alias
         :arg callback:   Callback to run on completion
@@ -1290,6 +1320,7 @@ class SolrClient(object):
     ):
         """
         `Delete Alias Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
+
         :arg name:       Name of alias
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -1321,6 +1352,7 @@ class SolrClient(object):
     ):
         """
         `Delete Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
+
         :arg name:       Name of alias
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
@@ -1354,6 +1386,7 @@ class SolrClient(object):
     ):
         """
         `Delete Replica Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
+
         :arg collection: Name of collection
         :arg shard:      Shard id
         :arg replica:    Replica to be removed
