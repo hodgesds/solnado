@@ -5,14 +5,12 @@ python:
   - "3.2"
   - "3.3"
   - "3.4"
-  # does not have headers provided, please ask https://launchpad.net/~pypy/+archive/ppa
-  # maintainers to fix their pypy-dev package.
+  - "3.5"
   - "pypy"
 install:
   - pip install .
   - pip install -r requirements.txt
-#services:
-    #- elasticsearch
 before_script:
-  - sleep 15
+  - curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=4.10.3 bash
+  - sleep 10
 script: nosetests
