@@ -43,9 +43,11 @@ class ClientTestCase(AsyncTestCase):
         yield gen.Task(partial(self.client.core_unload, 'test'))
 
         yield gen.Task(partial(self.client.core_create, 'test'))
-        yield gen.Task(partial(self.client.core_reload, 'test'))
+        res = yield gen.Task(partial(self.client.core_reload, 'test'))
         ok_(json.loads(res.body.decode('utf8')))
         eq_(200, res.code)
 
         # remove the created core
         yield gen.Task(partial(self.client.core_unload, 'test'))
+
+
