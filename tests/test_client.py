@@ -1,3 +1,4 @@
+from __future__ import print_function
 import json
 from functools import partial
 from nose.tools import ok_, eq_, nottest
@@ -39,21 +40,19 @@ class ClientTestCase(AsyncTestCase):
         ok_(json.loads(res.body.decode('utf8')))
         eq_(200, res.code)
 
-        # remove the created core
         yield gen.Task(partial(self.client.core_unload, 'test'))
         yield gen.Task(partial(self.client.core_reload, 'test'))
 
-    #@gen_test(timeout=15)
-    #def test_core_reload(self):
-    #    yield gen.Task(partial(self.client.core_create, 'test'))
-    #    res = yield gen.Task(partial(self.client.core_reload, 'test'))
+    @gen_test(timeout=15)
+    def test_core_reload(self):
+        yield gen.Task(partial(self.client.core_create, 't'))
+        res = yield gen.Task(partial(self.client.core_reload, 't'))
 
-    #    ok_(json.loads(res.body.decode('utf8')))
-    #    eq_(200, res.code)
+        ok_(json.loads(res.body.decode('utf8')))
+        eq_(200, res.code)
 
-    #    # remove the created core
-    #    yield gen.Task(partial(self.client.core_unload, 'test'))
-    #    yield gen.Task(partial(self.client.core_reload, 'test'))
+        yield gen.Task(partial(self.client.core_unload, 't'))
+        yield gen.Task(partial(self.client.core_reload, 't'))
 
     #@gen_test(timeout=25)
     #def test_core_rename(self):
@@ -62,8 +61,11 @@ class ClientTestCase(AsyncTestCase):
 
     #    res = yield gen.Task(partial(self.client.core_rename, 'baz', 'qux'))
     #    eq_(200, res.code)
+    #    print(res.body)
 
-    #    # remove the created core
+    #    yield gen.Task(partial(self.client.core_reload, 'baz'))
+    #    yield gen.Task(partial(self.client.core_reload, 'qux'))
     #    yield gen.Task(partial(self.client.core_unload, 'qux'))
     #    yield gen.Task(partial(self.client.core_reload, 'qux'))
+
 
