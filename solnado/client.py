@@ -221,11 +221,13 @@ class SolrClient(object):
     def core_create(self,
         name,
         callback     = None,
-        config       = 'solrconfig.xml',
+        #config       = 'solrconfig.xml',
+        config       = '',
         indent       = 'off',
         instance_dir = None,
         req_kwargs   = {},
-        schema       = 'schema.xml',
+        #schema       = 'schema.xml',
+        schema       = '',
         wt           = 'json'
     ):
         """
@@ -735,11 +737,11 @@ class SolrClient(object):
         collection,
         name,
         field_type,
-        callback       = None,
-        field_kwargs   = {},
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback     = None,
+        field_kwargs = {},
+        indent       = 'off',
+        req_kwargs   = {},
+        wt           = 'json'
     ):
         """
         For more information on `field types <https://cwiki.apache.org/confluence/display/solr/Defining+Fields>`_.
@@ -773,10 +775,10 @@ class SolrClient(object):
     def delete_field(self,
         collection,
         name,
-        callback       = None,
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         Documentation for `deleting fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaField>`_
@@ -800,11 +802,11 @@ class SolrClient(object):
     def replace_field(self,
         collection,
         name,
-        callback       = None,
-        indent         = 'off',
-        field_kwargs   = {},
-        request_kwargs = {},
-        wt             = 'json'
+        callback     = None,
+        indent       = 'off',
+        field_kwargs = {},
+        req_kwargs   = {},
+        wt           = 'json'
     ):
         """
         Documentation for `replacing fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaField>`_
@@ -836,11 +838,11 @@ class SolrClient(object):
         collection,
         name,
         field_type,
-        callback       = None,
-        field_kwargs   = {},
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback     = None,
+        field_kwargs = {},
+        indent       = 'off',
+        req_kwargs   = {},
+        wt           = 'json'
     ):
         """
         For more information on `field types <https://cwiki.apache.org/confluence/display/solr/Defining+Fields>`_.
@@ -873,10 +875,10 @@ class SolrClient(object):
     def delete_dynamic_field(self,
         collection,
         name,
-        callback       = None,
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         Documentation for `deleting dynamic fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaDynamicFieldRule>`_
@@ -900,11 +902,11 @@ class SolrClient(object):
     def replace_dynamic_field(self,
         collection,
         name,
-        callback       = None,
-        indent         = 'off',
-        field_kwargs   = {},
-        request_kwargs = {},
-        wt             = 'json'
+        callback     = None,
+        indent       = 'off',
+        field_kwargs = {},
+        req_kwargs   = {},
+        wt           = 'json'
     ):
         """
         Documentation for `replacing dynamic fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaDynamicFieldRule>`_.
@@ -935,11 +937,11 @@ class SolrClient(object):
     def add_field_type(self,
         collection,
         name,
-        callback       = None,
-        indent         = 'off',
-        field_kwargs   = {},
-        request_kwargs = {},
-        wt             = 'json'
+        callback     = None,
+        indent       = 'off',
+        field_kwargs = {},
+        req_kwargs   = {},
+        wt           = 'json'
     ):
         """
         Documentation for `adding new field type <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewFieldType>`_.
@@ -970,10 +972,10 @@ class SolrClient(object):
     def delete_field_type(self,
         collection,
         name,
-        callback       = None,
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         Documentation for `deleting field types <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaFieldType>`_
@@ -997,11 +999,11 @@ class SolrClient(object):
     def replace_field_type(self,
         collection,
         name,
-        callback       = None,
-        indent         = 'off',
-        field_kwargs   = {},
-        request_kwargs = {},
-        wt             = 'json'
+        callback     = None,
+        indent       = 'off',
+        field_kwargs = {},
+        req_kwargs   = {},
+        wt           = 'json'
     ):
         """
         Documentation for `replacing field types <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-ReplaceaFieldType>`_
@@ -1033,11 +1035,11 @@ class SolrClient(object):
         collection,
         src,
         dst,
-        callback       = None,
-        indent         = 'off',
-        maxChars       = None,
-        request_kwargs = {},
-        wt             = 'json'
+        callback   = None,
+        indent     = 'off',
+        maxChars   = None,
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         Documentation for `adding copy fields <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-AddaNewCopyFieldRule>`_
@@ -1070,11 +1072,11 @@ class SolrClient(object):
         collection,
         src,
         dst,
-        callback       = None,
-        indent         = 'off',
-        maxChars       = None,
-        request_kwargs = {},
-        wt             = 'json'
+        callback   = None,
+        indent     = 'off',
+        maxChars   = None,
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         Documentation for `deleting a copy field <https://cwiki.apache.org/confluence/display/solr/Schema+API#SchemaAPI-DeleteaCopyFieldRule>`_
@@ -1108,7 +1110,7 @@ class SolrClient(object):
         callback          = None,
         collection_kwargs = {},
         indent            = 'off',
-        request_kwargs    = {},
+        req_kwargs        = {},
         wt                = 'json'
     ):
         """
@@ -1123,12 +1125,13 @@ class SolrClient(object):
         """
         collection_kwargs.update({
             'action': 'CREATE',
+            'name': collection,
             'indent': indent,
             'wt':     wt
         })
 
         url  = self.mk_url(
-            'admin', 'collections',
+            'solr', 'admin', 'collections',
             **collection_kwargs
         )
 
@@ -1137,10 +1140,10 @@ class SolrClient(object):
 
     def reload_collection(self,
         collection,
-        callback       = None,
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback    = None,
+        indent      = 'off',
+        req_kwargs  = {},
+        wt          = 'json'
     ):
         """
         `Reload Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
@@ -1159,7 +1162,7 @@ class SolrClient(object):
         }
 
         url  = self.mk_url(
-            'admin', 'collections',
+            'solr', 'admin', 'collections',
             **collection_kwargs
         )
 
@@ -1169,11 +1172,11 @@ class SolrClient(object):
     def split_shard_collection(self,
         collection,
         shard,
-        callback       = None,
-        shard_kwargs   = {},
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback     = None,
+        shard_kwargs = {},
+        indent       = 'off',
+        req_kwargs   = {},
+        wt           = 'json'
     ):
         """
         `Split Shard <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
@@ -1195,7 +1198,7 @@ class SolrClient(object):
         }
 
         url  = self.mk_url(
-            'admin', 'collections',
+            'solr', 'admin', 'collections',
             **collection_kwargs
         )
 
@@ -1205,11 +1208,11 @@ class SolrClient(object):
     def shard_collection(self,
         collection,
         shard,
-        callback       = None,
-        shard_kwargs   = {},
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback     = None,
+        shard_kwargs = {},
+        indent       = 'off',
+        req_kwargs   = {},
+        wt           = 'json'
     ):
         """
         `Shard Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
@@ -1231,7 +1234,7 @@ class SolrClient(object):
         }
 
         url  = self.mk_url(
-            'admin', 'collections',
+            'solr', 'admin', 'collections',
             **collection_kwargs
         )
 
@@ -1241,10 +1244,10 @@ class SolrClient(object):
     def delete_shard_collection(self,
         collection,
         shard,
-        callback       = None,
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         `Delete Shard Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
@@ -1265,7 +1268,7 @@ class SolrClient(object):
         }
 
         url  = self.mk_url(
-            'admin', 'collections',
+            'solr', 'admin', 'collections',
             **collection_kwargs
         )
 
@@ -1275,10 +1278,10 @@ class SolrClient(object):
     def alias_collection(self,
         collections,
         name,
-        callback       = None,
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         `Alias Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
@@ -1300,7 +1303,7 @@ class SolrClient(object):
         }
 
         url  = self.mk_url(
-            'admin', 'collections',
+            'solr', 'admin', 'collections',
             **collection_kwargs
         )
 
@@ -1309,10 +1312,10 @@ class SolrClient(object):
 
     def delete_alias_collection(self,
         name,
-        callback       = None,
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         `Delete Alias Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
@@ -1324,15 +1327,15 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         collection_kwargs = {
-            'action':      'DELETEALIAS',
-            'indent':      indent,
-            'name':        name,
-            'shard':       shard,
-            'wt':          wt
+            'action': 'DELETEALIAS',
+            'indent': indent,
+            'name':   name,
+            'shard':  shard,
+            'wt':     wt
         }
 
         url  = self.mk_url(
-            'admin', 'collections',
+            'solr', 'admin', 'collections',
             **collection_kwargs
         )
 
@@ -1341,10 +1344,11 @@ class SolrClient(object):
 
     def delete_collection(self,
         name,
-        callback       = None,
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        shard      = None,
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         `Delete Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
@@ -1359,12 +1363,12 @@ class SolrClient(object):
             'action': 'DELETE',
             'indent': indent,
             'name':   name,
-            'shard':  shard,
+            'shard':  shard or name,
             'wt':     wt
         }
 
         url  = self.mk_url(
-            'admin', 'collections',
+            'solr', 'admin', 'collections',
             **collection_kwargs
         )
 
@@ -1375,10 +1379,10 @@ class SolrClient(object):
         collection,
         shard,
         replica,
-        callback       = None,
-        indent         = 'off',
-        request_kwargs = {},
-        wt             = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         `Delete Replica Collection <https://cwiki.apache.org/confluence/display/solr/Collections+API#CollectionsAPI-api1>`_
@@ -1401,7 +1405,7 @@ class SolrClient(object):
         }
 
         url  = self.mk_url(
-            'admin', 'collections',
+            'solr', 'admin', 'collections',
             **collection_kwargs
         )
 
