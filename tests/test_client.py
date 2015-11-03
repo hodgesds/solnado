@@ -28,6 +28,7 @@ class ClientTestCase(AsyncTestCase):
     @gen_test(timeout=10)
     def test_core_create(self):
         # delete any cores with the name to be created
+        #yield gen.Task(partial(self.client.core_unload, 'test', **{'del_inst_dir':'true'}))
         yield gen.Task(partial(self.client.core_unload, 'test'))
 
         res = yield gen.Task(partial(self.client.core_create, 'test'))
@@ -40,14 +41,14 @@ class ClientTestCase(AsyncTestCase):
     @gen_test(timeout=15)
     def test_core_reload(self):
         # delete any cores with the name to be created
-        yield gen.Task(partial(self.client.core_unload, 'test'))
+        yield gen.Task(partial(self.client.core_unload, 'foo'))
+        yield gen.Task(partial(self.client.core_create, 'foo'))
 
-        yield gen.Task(partial(self.client.core_create, 'test'))
-        res = yield gen.Task(partial(self.client.core_reload, 'test'))
+        res = yield gen.Task(partial(self.client.core_reload, 'foo'))
         ok_(json.loads(res.body.decode('utf8')))
         eq_(200, res.code)
 
         # remove the created core
-        yield gen.Task(partial(self.client.core_unload, 'test'))
+        yield gen.Task(partial(self.client.core_unload, 'foo'))
 
 

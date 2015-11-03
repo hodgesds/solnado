@@ -11,6 +11,5 @@ install:
   - pip install .
   - pip install -r requirements.txt
 before_script:
-  - curl -sSL https://raw.githubusercontent.com/moliware/travis-solr/master/travis-solr.sh | SOLR_VERSION=4.10.3 bash
-  - sleep 10
+  - curl -sSl https://raw.githubusercontent.com/hodgesds/travis-solr/master/travis-solr.sh | SOLR_VERSION=4.10.3 bash
 script: nosetests
