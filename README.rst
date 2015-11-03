@@ -20,6 +20,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+Testing
+-------
+Tested with python:
+2.6, 2.7, 3.2, 3.3, 3.4 and pypy
+
+
+Build status
+------------
+.. image:: https://travis-ci.org/hodgesds/solnado.svg?branch=master
+    :target: https://travis-ci.org/hodgesds/solnado
+
 Documentation
 -------------
 http://solnado.readthedocs.org/en/latest/
