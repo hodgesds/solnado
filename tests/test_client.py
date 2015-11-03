@@ -24,3 +24,28 @@ class ClientTestCase(AsyncTestCase):
         res = yield gen.Task(partial(self.client.core_status))
         ok_(json.loads(res.body.decode('utf8')))
         eq_(200, res.code)
+
+    @gen_test(timeout=10)
+    def test_core_create(self):
+        # delete any cores with the name to be created
+        yield gen.Task(partial(self.client.core_unload, 'test'))
+
+        res = yield gen.Task(partial(self.client.core_create, 'test'))
+        ok_(json.loads(res.body.decode('utf8')))
+        eq_(200, res.code)
+
+        # remove the created core
+        yield gen.Task(partial(self.client.core_unload, 'test'))
+
+    @gen_test(timeout=15)
+    def test_core_reload(self):
+        # delete any cores with the name to be created
+        yield gen.Task(partial(self.client.core_unload, 'test'))
+
+        yield gen.Task(partial(self.client.core_create, 'test'))
+        yield gen.Task(partial(self.client.core_reload, 'test'))
+        ok_(json.loads(res.body.decode('utf8')))
+        eq_(200, res.code)
+
+        # remove the created core
+        yield gen.Task(partial(self.client.core_unload, 'test'))

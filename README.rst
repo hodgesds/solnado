@@ -23,7 +23,7 @@ limitations under the License.
 Testing
 -------
 Tested with python:
-2.6, 2.7, 3.2, 3.3, 3.4 and pypy
+2.6, 2.7, 3.2, 3.3, 3.4, 3.5 and pypy
 
 
 Build status

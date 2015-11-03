@@ -238,11 +238,7 @@ class SolrClient(object):
         :arg req_kwargs: Optional tornado HTTPRequest kwargs
         :arg wt:         Response format: 'json' or 'xml'
         """
-        kw = {}
-        if core:
-            kw['core'] = core
-
-        kw.update({
+        kw = {
             'action':      'CREATE',
             'config':      config,
             'indent':      indent,
@@ -250,7 +246,7 @@ class SolrClient(object):
             'name':        name,
             'schema':      schema,
             'wt':          wt,
-        })
+        }
 
         url     = self.mk_url('solr', 'admin', 'cores', **kw)
         request = self.mk_req(url, **req_kwargs)
