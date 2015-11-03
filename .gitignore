@@ -3,3 +3,6 @@ build/
 dist/
 *.swp
 solnado.egg*
+.cache*
+.tox*
+tests/__pycache__*

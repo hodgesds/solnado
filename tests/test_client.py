@@ -22,5 +22,5 @@ class ClientTestCase(AsyncTestCase):
     @gen_test(timeout=10)
     def test_core_status(self):
         res = yield gen.Task(partial(self.client.core_status))
-        ok_(json.loads(res.body))
+        ok_(json.loads(res.body.decode('utf8')))
         eq_(200, res.code)
