@@ -94,11 +94,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         q.update({'indent':indent, 'wt':wt})
-        url = self.mk_url(
-            collection,
-            'query',
-            **q
-        )
+        url = self.mk_url('solr', collection, 'query', **q)
 
         request = self.mk_req(url, **req_kwargs)
         self.client.fetch(request, callback = callback)
@@ -110,20 +106,21 @@ class SolrClient(object):
         callback     = None,
         indent       = 'off',
         overwrite    = True,
-        commitWithin = 0,
+        commitWithin = 1000,
         req_kwargs   = {},
         wt           = 'json'
     ):
         """
         `json api <https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates>`_
 
-        :arg collection: The name of the collection
-        :arg boost:      Boosted weight
-        :arg doc:        Dictionary to be uploaded
-        :arg callback:   Callback to run on completion
-        :arg indent:     Indent the response body
-        :arg req_kwargs: Optional tornado HTTPRequest kwargs
-        :arg wt:         Response format: 'json' or 'xml'
+        :arg collection:   The name of the collection
+        :arg boost:        Boosted weight
+        :arg CommitWithin: Commit within time (ms)
+        :arg doc:          Dictionary to be uploaded
+        :arg callback:     Callback to run on completion
+        :arg indent:       Indent the response body
+        :arg req_kwargs:   Optional tornado HTTPRequest kwargs
+        :arg wt:           Response format: 'json' or 'xml'
         """
 
         url = self.mk_url(
@@ -145,20 +142,24 @@ class SolrClient(object):
     def add_json_documents(self,
         collection,
         docs,
-        callback    = None,
-        indent      = 'off',
-        req_kwargs  = {},
-        wt          = 'json'
+        boost        = 1,
+        callback     = None,
+        commitWithin = 1000,
+        indent       = 'off',
+        req_kwargs   = {},
+        wt           = 'json'
     ):
         """
         `json api <https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates>`_
 
-        :arg collection: The name of the collection
-        :arg docs:       Dictionary to be uploaded
-        :arg callback:   Callback to run on completion
-        :arg indent:     Indent the response body
-        :arg req_kwargs: Optional tornado HTTPRequest kwargs
-        :arg wt:         Response format: 'json' or 'xml'
+        :arg collection:   The name of the collection
+        :arg docs:         Dictionary to be uploaded
+        :arg boost:        Boosted weight
+        :arg CommitWithin: Commit within time (ms)
+        :arg callback:     Callback to run on completion
+        :arg indent:       Indent the response body
+        :arg req_kwargs:   Optional tornado HTTPRequest kwargs
+        :arg wt:           Response format: 'json' or 'xml'
         """
         url = self.mk_url('solr', collection, 'update', **{'indent':indent, 'wt':wt})
         self._post_json(url, json.dumps(docs), req_kwargs=req_kwargs, callback=callback)
@@ -181,7 +182,7 @@ class SolrClient(object):
         :arg req_kwargs: Optional tornado HTTPRequest kwargs
         :arg wt:         Response format: 'json' or 'xml'
         """
-        url = self.mk_url(collection, 'update', **{'indent':indent, 'wt':wt})
+        url = self.mk_url('solr', collection, 'update', **{'indent':indent, 'wt':wt})
         self._post_json(url, upjson, req_kwargs=req_kwargs, callback=callback)
 
     def delete(self,
@@ -201,7 +202,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
 
-        url = self.mk_url(collection, 'update', **{'indent':indent, 'wt':wt})
+        url = self.mk_url('solr', collection, 'update', **{'indent':indent, 'wt':wt})
         j   = json.dumps({'delete': [docs]})
         self._post_json(url, j, req_kwargs=req_kwargs, callback=callback)
 
@@ -235,12 +236,12 @@ class SolrClient(object):
     def core_create(self,
         name,
         callback     = None,
-        #config       = 'solrconfig.xml',
+        config       = 'solrconfig.xml',
         config       = '',
         indent       = 'off',
         instance_dir = None,
         req_kwargs   = {},
-        #schema       = 'schema.xml',
+        schema       = 'schema.xml',
         schema       = '',
         wt           = 'json'
     ):
