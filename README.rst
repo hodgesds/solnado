@@ -1,7 +1,7 @@
 Tornado Solr Client
 ===================
 
-Tornado http client for Solr.
+Tornado http client for Solr 5.X.X.
 
 License
 -------
