@@ -1,3 +1,4 @@
+import json
 import sys
 from   abc import ABCMeta, abstractmethod
 from   tornado.httpclient import AsyncHTTPClient, HTTPRequest
@@ -105,28 +106,41 @@ class SolrClient(object):
     def add_json_document(self,
         collection,
         doc,
-        callback    = None,
-        indent      = 'off',
-        req_kwargs  = {},
-        wt          = 'json'
+        boost        = 1,
+        callback     = None,
+        indent       = 'off',
+        overwrite    = True,
+        commitWithin = 0,
+        req_kwargs   = {},
+        wt           = 'json'
     ):
         """
         `json api <https://cwiki.apache.org/confluence/display/solr/Uploading+Data+with+Index+Handlers#UploadingDatawithIndexHandlers-JSONFormattedIndexUpdates>`_
 
         :arg collection: The name of the collection
+        :arg boost:      Boosted weight
         :arg doc:        Dictionary to be uploaded
         :arg callback:   Callback to run on completion
         :arg indent:     Indent the response body
         :arg req_kwargs: Optional tornado HTTPRequest kwargs
         :arg wt:         Response format: 'json' or 'xml'
         """
-        q.update({'indent':indent, 'wt':wt})
+
         url = self.mk_url(
-            collection,
-            'update', 'json', 'docs',
-            **q
+            'solr', collection, 'update',
+            **{'indent':indent, 'wt':wt}
         )
-        self._post_json(url, json.dumps(doc), req_kwargs=req_kwargs, callback=callback)
+
+        j = json.dumps({
+            'add': {
+                'boost':        boost,
+                'commitWithin': commitWithin,
+                'doc':          doc,
+                'overwrite':    overwrite,
+            }
+        })
+
+        self._post_json(url, j, req_kwargs=req_kwargs, callback=callback)
 
     def add_json_documents(self,
         collection,
@@ -146,7 +160,7 @@ class SolrClient(object):
         :arg req_kwargs: Optional tornado HTTPRequest kwargs
         :arg wt:         Response format: 'json' or 'xml'
         """
-        url = self.mk_url(collection, 'update', **{'indent':indent, 'wt':wt})
+        url = self.mk_url('solr', collection, 'update', **{'indent':indent, 'wt':wt})
         self._post_json(url, json.dumps(docs), req_kwargs=req_kwargs, callback=callback)
 
     def update_json(self,

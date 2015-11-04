@@ -1,4 +1,3 @@
-from __future__ import print_function
 import json
 from functools import partial
 from nose.tools import ok_, eq_, nottest
@@ -68,4 +67,13 @@ class ClientTestCase(AsyncTestCase):
     #    yield gen.Task(partial(self.client.core_unload, 'qux'))
     #    yield gen.Task(partial(self.client.core_reload, 'qux'))
 
+    @gen_test
+    def test_add_json_document(self):
+        d = {"id":"123", "title":"test_add"}
+        yield gen.Task(partial(self.client.core_create, 'add_j'))
+        yield gen.Task(partial(self.client.core_reload, 'add_j'))
 
+        res = yield gen.Task(partial(self.client.add_json_document, 'add_j', d))
+
+        ok_(json.loads(res.body.decode('utf8')))
+        eq_(200, res.code)
