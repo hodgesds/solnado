@@ -77,3 +77,17 @@ class ClientTestCase(AsyncTestCase):
 
         ok_(json.loads(res.body.decode('utf8')))
         eq_(200, res.code)
+
+    @gen_test
+    def test_add_json_documents(self):
+        d = [
+            {"id":"123", "title":"test_add"},
+            {"id":"456", "title":"bar_baz"},
+        ]
+        yield gen.Task(partial(self.client.core_create, 'add_docs'))
+        yield gen.Task(partial(self.client.core_reload, 'add_docs'))
+
+        res = yield gen.Task(partial(self.client.add_json_document, 'add_docs', d))
+
+        ok_(json.loads(res.body.decode('utf8')))
+        eq_(200, res.code)
