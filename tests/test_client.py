@@ -90,8 +90,6 @@ class ClientTestCase(AsyncTestCase):
 
         res = yield gen.Task(partial(self.client.add_json_document, 'add_docs', d))
 
-        print res.body
-
         eq_(200, res.code)
 
     @gen_test
