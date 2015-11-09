@@ -35,12 +35,13 @@ class ClientTestCase(AsyncTestCase):
 
     @gen_test(timeout=10)
     def test_core_create(self):
-        res = yield gen.Task(partial(self.client.core_create, 'test'))
+        yield gen.Task(partial(self.client.core_unload, 'test_core'))
+        res = yield gen.Task(partial(self.client.core_create, 'test_core'))
         ok_(json.loads(res.body.decode('utf8')))
         eq_(200, res.code)
 
-        yield gen.Task(partial(self.client.core_unload, 'test'))
-        yield gen.Task(partial(self.client.core_reload, 'test'))
+        yield gen.Task(partial(self.client.core_unload, 'test_core'))
+        yield gen.Task(partial(self.client.core_reload, 'test_core'))
 
     @gen_test(timeout=15)
     def test_core_reload(self):
@@ -50,7 +51,8 @@ class ClientTestCase(AsyncTestCase):
         ok_(json.loads(res.body.decode('utf8')))
         eq_(200, res.code)
 
-        yield gen.Task(partial(self.client.core_unload, 't'))
+        unload = yield gen.Task(partial(self.client.core_unload, 't'))
+        eq_(200, unload.code)
         yield gen.Task(partial(self.client.core_reload, 't'))
 
     #@gen_test(timeout=25)
@@ -60,7 +62,6 @@ class ClientTestCase(AsyncTestCase):
 
     #    res = yield gen.Task(partial(self.client.core_rename, 'baz', 'qux'))
     #    eq_(200, res.code)
-    #    print(res.body)
 
     #    yield gen.Task(partial(self.client.core_reload, 'baz'))
     #    yield gen.Task(partial(self.client.core_reload, 'qux'))
@@ -89,5 +90,21 @@ class ClientTestCase(AsyncTestCase):
 
         res = yield gen.Task(partial(self.client.add_json_document, 'add_docs', d))
 
-        ok_(json.loads(res.body.decode('utf8')))
+        print res.body
+
+        eq_(200, res.code)
+
+    @gen_test
+    def test_query(self):
+        d = [
+            {"id":"123", "title":"test_add"},
+            {"id":"456", "title":"bar_baz"},
+        ]
+        yield gen.Task(partial(self.client.core_create, 'add_docs'))
+        yield gen.Task(partial(self.client.core_reload, 'add_docs'))
+
+        yield gen.Task(partial(self.client.add_json_document, 'add_docs', d))
+
+        q = {'q':'bar_baz'}
+        res = yield gen.Task(partial(self.client.query, 'add_docs', q))
         eq_(200, res.code)

@@ -72,7 +72,7 @@ class SolrClient(object):
             **req_kwargs
         )
 
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def query(self,
             collection,
@@ -97,7 +97,7 @@ class SolrClient(object):
         url = self.mk_url('solr', collection, 'query', **q)
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def add_json_document(self,
         collection,
@@ -161,8 +161,12 @@ class SolrClient(object):
         :arg req_kwargs:   Optional tornado HTTPRequest kwargs
         :arg wt:           Response format: 'json' or 'xml'
         """
-        url = self.mk_url('solr', collection, 'update', **{'indent':indent, 'wt':wt})
-        self._post_json(url, json.dumps(docs), req_kwargs=req_kwargs, callback=callback)
+        url = self.mk_url('solr', collection, 'update', 'json', 'docs',
+            **{'indent':indent, 'wt':wt}
+        )
+        self._post_json(url, docs, req_kwargs=req_kwargs,
+            callback=callback
+        )
 
     def update_json(self,
         collection,
@@ -231,17 +235,15 @@ class SolrClient(object):
         url     = self.mk_url('solr', 'admin', 'cores', **kw)
         request = self.mk_req(url, **req_kwargs)
 
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def core_create(self,
         name,
         callback     = None,
-        config       = 'solrconfig.xml',
         config       = '',
         indent       = 'off',
         instance_dir = None,
         req_kwargs   = {},
-        schema       = 'schema.xml',
         schema       = '',
         wt           = 'json'
     ):
@@ -257,18 +259,22 @@ class SolrClient(object):
         """
         kw = {
             'action':      'CREATE',
-            'config':      config,
             'indent':      indent,
-            'instanceDir': instance_dir,
             'name':        name,
             'schema':      schema,
             'wt':          wt,
         }
 
+        if config:
+            kw.update({'config':config})
+
+        if instance_dir :
+            kw.update({'instanceDir':instance_dir})
+
         url     = self.mk_url('solr', 'admin', 'cores', **kw)
         request = self.mk_req(url, **req_kwargs)
 
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, method='POST', callback=callback)
 
     def core_reload(self,
         core,
@@ -298,7 +304,7 @@ class SolrClient(object):
         url     = self.mk_url('solr', 'admin', 'cores', **kw)
         request = self.mk_req(url, **req_kwargs)
 
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, method='POST', callback=callback)
 
     def core_rename(self,
         core,
@@ -330,7 +336,7 @@ class SolrClient(object):
         url     = self.mk_url('solr', 'admin', 'cores', **kw)
         request = self.mk_req(url, **req_kwargs)
 
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, method='POST', callback=callback)
 
     def core_swap(self,
         core,
@@ -362,7 +368,7 @@ class SolrClient(object):
         url     = self.mk_url('solr', 'admin', 'cores', **kw)
         request = self.mk_req(url, **req_kwargs)
 
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def core_unload(self,
         core,
@@ -407,7 +413,7 @@ class SolrClient(object):
         url     = self.mk_url('solr', 'admin', 'cores', **kw)
         request = self.mk_req(url, **req_kwargs)
 
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     # XXX: CORE API -> MERGEINDEXES, SPLIT, REQUESTSTATUS
 
@@ -443,7 +449,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def delete_configset(self,
         name,
@@ -472,7 +478,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def list_configset(self,
         callback      = None,
@@ -498,7 +504,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def schema(self,
         collection,
@@ -524,7 +530,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def schema_fields(self,
         collection,
@@ -550,7 +556,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def schema_dynamic_fields(self,
         collection,
@@ -576,7 +582,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def schema_field_types(self,
         collection,
@@ -602,7 +608,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def schema_copy_fields(self,
         collection,
@@ -626,7 +632,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def schema_name(self,
         collection,
@@ -650,7 +656,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def schema_version(self,
         collection,
@@ -674,7 +680,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def schema_unique_key(self,
         collection,
@@ -698,7 +704,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def schema_similarity(self,
         collection,
@@ -722,7 +728,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def schema_default_operator(self,
         collection,
@@ -746,7 +752,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def add_field(self,
         collection,
@@ -1151,7 +1157,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, method='POST', **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def reload_collection(self,
         collection,
@@ -1182,7 +1188,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, method='POST', **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def split_shard_collection(self,
         collection,
@@ -1218,7 +1224,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, method='POST', **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def shard_collection(self,
         collection,
@@ -1254,7 +1260,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, method='POST', **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def delete_shard_collection(self,
         collection,
@@ -1288,7 +1294,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, method='POST', **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def alias_collection(self,
         collections,
@@ -1323,7 +1329,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, method='POST', **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def delete_alias_collection(self,
         name,
@@ -1355,7 +1361,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, method='POST', **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def delete_collection(self,
         name,
@@ -1388,7 +1394,7 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, method='POST', **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
 
     def delete_replica_collection(self,
         collection,
@@ -1425,4 +1431,4 @@ class SolrClient(object):
         )
 
         request = self.mk_req(url, method='POST', **req_kwargs)
-        self.client.fetch(request, callback = callback)
+        self.client.fetch(request, callback=callback)
