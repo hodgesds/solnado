@@ -11,6 +11,9 @@ else:
     from urllib.parse import urlencode
 
 
+class SolrConfigurationError(Exception):
+    pass
+
 class SolrClient(object):
 
     __metaclass__ = ABCMeta
@@ -1132,6 +1135,10 @@ class SolrClient(object):
         collection_kwargs = {},
         indent            = 'off',
         req_kwargs        = {},
+        router_name       = 'compositeId',
+        shards            = None,
+        shards_per_node   = 1,
+        replication       = 1,
         wt                = 'json'
     ):
         """
@@ -1142,13 +1149,25 @@ class SolrClient(object):
         :arg callback:          Callback to run on completion
         :arg indent:            Indent the response body
         :arg req_kwargs:        Optional tornado HTTPRequest kwargs
+        :arg router_name:       Either 'compositeId' or 'implicit'
         :arg wt:                Response format: 'json' or 'xml'
         """
+        if shards:
+            n_shards = len(shards.split(','))
+        else:
+            n_shards = 1
+
+        if router_name not in ('compositeId', 'implicit'):
+            raise SolrConfigurationError()
+
         collection_kwargs.update({
-            'action': 'CREATE',
-            'name': collection,
-            'indent': indent,
-            'wt':     wt
+            'action':            'CREATE',
+            'name':              collection,
+            'indent':            indent,
+            'numShards':         n_shards,
+            'replicationFactor': replication,
+            'maxShardsPerNode':  shards_per_node,
+            'wt':                wt
         })
 
         url  = self.mk_url(

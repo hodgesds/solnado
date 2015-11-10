@@ -106,3 +106,11 @@ class ClientTestCase(AsyncTestCase):
         q = {'q':'bar_baz'}
         res = yield gen.Task(partial(self.client.query, 'add_docs', q))
         eq_(200, res.code)
+
+    @gen_test
+    def test_create_collection(self):
+        yield gen.Task(partial(self.client.delete_collection, 'qux'))
+        res = yield gen.Task(partial(self.client.create_collection, 'qux'))
+        eq_(200, res.code)
+
+
