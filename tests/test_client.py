@@ -18,7 +18,7 @@ class ClientTestCase(AsyncTestCase):
         url = self.client.mk_url(*['a','b','c'], **{'key':'value'})
         self.assertEquals('/a/b/c?key=value', url)
 
-    @gen_test(timeout=10)
+    @gen_test(timeout=15)
     def test_create_collection(self):
         p = partial(self.client.create_collection, 'fox', **{'collection_kwargs':{'numShards':1}})
         res = yield gen.Task(p)
@@ -26,13 +26,13 @@ class ClientTestCase(AsyncTestCase):
         p = partial(self.client.delete_collection, 'fox')
         yield gen.Task(p)
 
-    @gen_test(timeout=10)
+    @gen_test(timeout=15)
     def test_core_status(self):
         res = yield gen.Task(partial(self.client.core_status))
         ok_(json.loads(res.body.decode('utf8')))
         eq_(200, res.code)
 
-    @gen_test(timeout=10)
+    @gen_test(timeout=15)
     def test_core_create(self):
         yield gen.Task(partial(self.client.core_unload, 'test_core'))
         res = yield gen.Task(partial(self.client.core_create, 'test_core'))
@@ -67,7 +67,7 @@ class ClientTestCase(AsyncTestCase):
     #    yield gen.Task(partial(self.client.core_unload, 'qux'))
     #    yield gen.Task(partial(self.client.core_reload, 'qux'))
 
-    @gen_test
+    @gen_test(timeout=15)
     def test_add_json_document(self):
         d = {"id":"123", "title":"test_add"}
         yield gen.Task(partial(self.client.core_create, 'add_j'))
@@ -78,7 +78,7 @@ class ClientTestCase(AsyncTestCase):
         ok_(json.loads(res.body.decode('utf8')))
         eq_(200, res.code)
 
-    @gen_test
+    @gen_test(timeout=15)
     def test_add_json_documents(self):
         d = [
             {"id":"123", "title":"test_add"},
@@ -91,7 +91,7 @@ class ClientTestCase(AsyncTestCase):
 
         eq_(200, res.code)
 
-    @gen_test
+    @gen_test(timeout=15)
     def test_query(self):
         d = [
             {"id":"123", "title":"test_add"},
@@ -106,7 +106,7 @@ class ClientTestCase(AsyncTestCase):
         res = yield gen.Task(partial(self.client.query, 'add_docs', q))
         eq_(200, res.code)
 
-    @gen_test
+    @gen_test(timeout=15)
     def test_delete(self):
         yield gen.Task(partial(self.client.delete_collection, 'qux'))
         yield gen.Task(partial(self.client.create_collection, 'qux'))
@@ -119,20 +119,20 @@ class ClientTestCase(AsyncTestCase):
         eq_(200, res.code)
         yield gen.Task(partial(self.client.delete_collection, 'qux'))
 
-    @gen_test
+    @gen_test(timeout=15)
     def test_create_collection(self):
         yield gen.Task(partial(self.client.delete_collection, 'qux'))
         res = yield gen.Task(partial(self.client.create_collection, 'qux'))
         eq_(200, res.code)
 
-    @gen_test
+    @gen_test(timeout=15)
     def test_delete_collection(self):
         yield gen.Task(partial(self.client.delete_collection, 'bix'))
         yield gen.Task(partial(self.client.create_collection, 'bix'))
         res = yield gen.Task(partial(self.client.delete_collection, 'bix'))
         eq_(200, res.code)
 
-    @gen_test
+    @gen_test(timeout=15)
     def test_reload_collection(self):
         yield gen.Task(partial(self.client.create_collection, 'qux'))
         res = yield gen.Task(partial(self.client.reload_collection, 'qux'))
