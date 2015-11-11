@@ -107,6 +107,19 @@ class ClientTestCase(AsyncTestCase):
         eq_(200, res.code)
 
     @gen_test
+    def test_delete(self):
+        yield gen.Task(partial(self.client.delete_collection, 'qux'))
+        yield gen.Task(partial(self.client.create_collection, 'qux'))
+        d = [
+            {"id":"123", "title":"test_add"},
+            {"id":"456", "title":"bar_baz"},
+        ]
+        yield gen.Task(partial(self.client.add_json_document, 'add_docs', d))
+        res = yield gen.Task(partial(self.client.delete, 'qux', ['123']))
+        eq_(200, res.code)
+        yield gen.Task(partial(self.client.delete_collection, 'qux'))
+
+    @gen_test
     def test_create_collection(self):
         yield gen.Task(partial(self.client.delete_collection, 'qux'))
         res = yield gen.Task(partial(self.client.create_collection, 'qux'))
