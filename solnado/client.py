@@ -1195,10 +1195,10 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         collection_kwargs = {
-            'action':     'RELOAD',
-            'collection': collection,
-            'indent':     indent,
-            'wt':         wt
+            'action': 'RELOAD',
+            'name':   collection,
+            'indent': indent,
+            'wt':     wt
         }
 
         url  = self.mk_url(

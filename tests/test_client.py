@@ -14,7 +14,6 @@ class ClientTestCase(AsyncTestCase):
     def test_mk_req(self):
         self.assertEquals(self.client.base_url, self.client.mk_req('').url)
         self.assertEquals('GET', self.client.mk_req('').method)
-
     def test_mk_url(self):
         url = self.client.mk_url(*['a','b','c'], **{'key':'value'})
         self.assertEquals('/a/b/c?key=value', url)
@@ -113,4 +112,16 @@ class ClientTestCase(AsyncTestCase):
         res = yield gen.Task(partial(self.client.create_collection, 'qux'))
         eq_(200, res.code)
 
+    @gen_test
+    def test_delete_collection(self):
+        yield gen.Task(partial(self.client.delete_collection, 'bix'))
+        yield gen.Task(partial(self.client.create_collection, 'bix'))
+        res = yield gen.Task(partial(self.client.delete_collection, 'bix'))
+        eq_(200, res.code)
 
+    @gen_test
+    def test_reload_collection(self):
+        yield gen.Task(partial(self.client.create_collection, 'qux'))
+        res = yield gen.Task(partial(self.client.reload_collection, 'qux'))
+        eq_(200, res.code)
+        yield gen.Task(partial(self.client.delete_collection, 'qux'))
