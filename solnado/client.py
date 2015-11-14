@@ -1338,7 +1338,6 @@ class SolrClient(object):
             'collections': collections,
             'indent':      indent,
             'name':        name,
-            'shard':       shard,
             'wt':          wt
         }
 
@@ -1370,7 +1369,6 @@ class SolrClient(object):
             'action': 'DELETEALIAS',
             'indent': indent,
             'name':   name,
-            'shard':  shard,
             'wt':     wt
         }
 

@@ -138,3 +138,11 @@ class ClientTestCase(AsyncTestCase):
         res = yield gen.Task(partial(self.client.reload_collection, 'qux'))
         eq_(200, res.code)
         yield gen.Task(partial(self.client.delete_collection, 'qux'))
+
+    @gen_test(timeout=15)
+    def test_alias_collection(self):
+        yield gen.Task(partial(self.client.delete_collection, 'bix'))
+        yield gen.Task(partial(self.client.create_collection, 'bix'))
+        res = yield gen.Task(partial(self.client.alias_collection, ['bix'], 'quix'))
+        eq_(200, res.code)
+        yield gen.Task(partial(self.client.delete_collection, 'bix'))
