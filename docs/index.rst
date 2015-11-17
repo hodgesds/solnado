@@ -5,6 +5,8 @@
 
 Welcome to Solnado's documentation!
 ===================================
+Solnado is a Tornado based Solr client that is compatible with coroutines and callbacks. 
+It is designed to be a lightweight wrapper around the Solr HTTP API.
 
 Contents:
 
