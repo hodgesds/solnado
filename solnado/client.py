@@ -526,9 +526,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
 
-        url = self.mk_url(
-            collection,
-            'schema',
+        url = self.mk_url('solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -554,7 +552,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         url = self.mk_url(
-            collection, 'schema', 'fields', field,
+            'solr', collection, 'schema', 'fields', field,
             **{'indent':indent, 'wt':wt}
         )
 
@@ -580,7 +578,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         url = self.mk_url(
-            collection, 'schema', 'dynamicfields', field,
+            'solr', collection, 'schema', 'dynamicfields', field,
             **{'indent':indent, 'wt':wt}
         )
 
@@ -606,7 +604,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         url = self.mk_url(
-            collection, 'schema', 'fieldtypes', field,
+            'solr', collection, 'schema', 'fieldtypes', field,
             **{'indent':indent, 'wt':wt}
         )
 
@@ -630,7 +628,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         url = self.mk_url(
-            collection, 'schema', 'copyfields',
+            'solr', collection, 'schema', 'copyfields',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -654,7 +652,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         url = self.mk_url(
-            collection, 'schema', 'name',
+            'solr', collection, 'schema', 'name',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -678,7 +676,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         url = self.mk_url(
-            collection, 'schema', 'version',
+            'solr', collection, 'schema', 'version',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -702,7 +700,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         url = self.mk_url(
-            collection, 'schema', 'uniquekey',
+            'solr', collection, 'schema', 'uniquekey',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -726,7 +724,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         url = self.mk_url(
-            collection, 'schema', 'similarity',
+            'solr', collection, 'schema', 'similarity',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -750,7 +748,7 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         url = self.mk_url(
-            collection, 'schema', 'solrqueryparser', 'defaultoperator',
+            'solr', collection, 'schema', 'solrqueryparser', 'defaultoperator',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -783,7 +781,7 @@ class SolrClient(object):
         """
 
         url = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -816,7 +814,7 @@ class SolrClient(object):
         """
 
         url  = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
         body = {"delete-field": { "name": name }}
@@ -845,7 +843,7 @@ class SolrClient(object):
         """
 
         url  = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -883,7 +881,7 @@ class SolrClient(object):
         """
 
         url = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -916,7 +914,7 @@ class SolrClient(object):
         """
 
         url = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
         body = {"delete-dynamic-field": { "name": name }}
@@ -945,7 +943,7 @@ class SolrClient(object):
         """
 
         url  = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -980,7 +978,7 @@ class SolrClient(object):
         """
 
         url  = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -1013,7 +1011,7 @@ class SolrClient(object):
         """
 
         url = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
         body = {"delete-field-type": { "name": name }}
@@ -1042,7 +1040,7 @@ class SolrClient(object):
         """
 
         url  = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -1079,7 +1077,7 @@ class SolrClient(object):
         """
 
         url  = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
 
@@ -1116,7 +1114,7 @@ class SolrClient(object):
         """
 
         url  = self.mk_url(
-            collection, 'schema',
+            'solr', collection, 'schema',
             **{'indent':indent, 'wt':wt}
         )
 
