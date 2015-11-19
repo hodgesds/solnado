@@ -172,3 +172,15 @@ class ClientTestCase(AsyncTestCase):
         res = yield gen.Task(partial(self.client.delete_field, 'bix', 'stamp'))
         eq_(200, res.code)
         yield gen.Task(partial(self.client.delete_collection, 'bix'))
+
+    @gen_test(timeout=15)
+    def test_replace_field(self):
+        yield gen.Task(partial(self.client.delete_collection, 'bix'))
+        yield gen.Task(partial(self.client.create_collection, 'bix'))
+        yield gen.Task(partial(self.client.add_field, 'bix', 'stamp', 'tdate'))
+        res = yield gen.Task(partial(
+            self.client.replace_field, 'bix', 'stamp',
+            field_kwargs = {'type':'date'}
+        ))
+        eq_(200, res.code)
+        yield gen.Task(partial(self.client.delete_collection, 'bix'))
