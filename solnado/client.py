@@ -943,11 +943,7 @@ class SolrClient(object):
             **{'indent':indent, 'wt':wt}
         )
 
-        body = {"replace-dynamic-field": {
-                "name": name,
-                "type": field_type,
-            }
-        }
+        body = {"replace-dynamic-field": { "name": name} }
         body['replace-dynamic-field'].update(field_kwargs)
 
         self._post_json(url, body, req_kwargs=req_kwargs, callback=callback)
@@ -1040,11 +1036,7 @@ class SolrClient(object):
             **{'indent':indent, 'wt':wt}
         )
 
-        body = {"replace-field-type": {
-                "name": name,
-                "type": field_type,
-            }
-        }
+        body = {"replace-field-type": {"name": name} }
         body['replace-field-type'].update(field_kwargs)
 
         self._post_json(url, body, req_kwargs=req_kwargs, callback=callback)
