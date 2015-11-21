@@ -1058,7 +1058,6 @@ class SolrClient(object):
         :arg src:          Source field name
         :arg dst:          Destination field name(s)
         :arg callback:     Callback to run on completion
-        :arg field_kwargs: Optional field type kwargs
         :arg indent:       Indent the response body
         :arg req_kwargs:   Optional tornado HTTPRequest kwargs
         :arg wt:           Response format: 'json' or 'xml'
@@ -1074,7 +1073,6 @@ class SolrClient(object):
                 "dest": dst, #XXX: handle lists
             }
         }
-        body['add-copy-field'].update(field_kwargs)
 
         self._post_json(url, body, req_kwargs=req_kwargs, callback=callback)
 
