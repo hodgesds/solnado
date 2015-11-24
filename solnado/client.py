@@ -33,8 +33,8 @@ class SolrClient(object):
         self.base_url = "%s://%s:%s%s" % (method, host, port, prefix)
         self.certs    = ca_certs
         self.client   = AsyncHTTPClient(
-                            ioloop or tornado.ioloop.IOLoop.current()
-                        )
+            ioloop or tornado.ioloop.IOLoop.current()
+        )
 
     def mk_req(self, url, **kwargs):
         """

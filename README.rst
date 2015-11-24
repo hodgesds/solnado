@@ -3,6 +3,31 @@ Tornado Solr Client
 
 Tornado http client for Solr 5.X.X.
 
+CLI
+---
+Solnado provides a simple to use API to interact with Solr.
+
+Use the following environment variables:
+
+    export SOLR_HOST=localhost
+    export SOLR_PORT=8983
+
+To get the current solr status:
+
+    solnado status
+
+Create a collection:
+
+    solnado collection create foo
+
+Delete a collection:
+
+    solnado collection create foo
+
+Query a collection
+
+    solnado search foo "*"
+
 License
 -------
 
