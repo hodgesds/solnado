@@ -10,6 +10,7 @@ Solnado provides a simple to use API to interact with Solr.
 Use the following environment variables:
 
     export SOLR_HOST=localhost
+    
     export SOLR_PORT=8983
 
 To get the current solr status:
