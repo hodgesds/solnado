@@ -19,7 +19,6 @@ tests_require = [
     'nose',
     'coverage',
     'mock',
-    'pyaml',
     'nosexcover',
     'tornado>=3.2.2',
 ]
@@ -27,19 +26,21 @@ tests_require = [
 # use external unittest for 2.6
 if sys.version_info[:2] == (2, 6):
     install_requires.append('unittest2')
+    install_requires.append('argparse')
 
 setup(
-    name = 'solnado',
-    description = "Tornado HTTP client for Solr",
-    license="Apache License, Version 2.0",
-    url = "https://github.com/hodgesds/solnado",
+    name             = 'solnado',
+    description      = "Tornado HTTP client for Solr",
+    license          = "Apache License, Version 2.0",
+    url              = "https://github.com/hodgesds/solnado",
     long_description = long_description,
-    version = __versionstr__,
-    author = "Daniel Hodges",
-    author_email = "hodges.daniel.scott@gmail.com",
-    packages=find_packages(
-        where='.',
-        exclude=('tests*', )
+    version          = __versionstr__,
+    author           = "Daniel Hodges",
+    author_email     = "hodges.daniel.scott@gmail.com",
+    scripts          = ['bin/solnado'],
+    packages         = find_packages(
+        where        = '.',
+        exclude      = ('tests*', 'bin*')
     ),
     classifiers = [
         "Development Status :: 4 - Beta",

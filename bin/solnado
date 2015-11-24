@@ -1,0 +1,3 @@
+#!/usr/bin/env python
+import solnado.bin.cli
+solnado.bin.cli.main()
