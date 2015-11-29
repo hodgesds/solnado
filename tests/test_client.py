@@ -271,3 +271,13 @@ class ClientTestCase(AsyncTestCase):
         ))
         eq_(200, res.code)
         yield gen.Task(partial(self.client.delete_collection, 'bix'))
+
+    @gen_test(timeout=30)
+    def test_schema_copy_fields(self):
+        yield gen.Task(partial(self.client.delete_collection, 'bix'))
+        yield gen.Task(partial(self.client.create_collection, 'bix'))
+        res = yield gen.Task(partial(
+            self.client.schema_copy_fields, 'bix'
+        ))
+        eq_(200, res.code)
+        yield gen.Task(partial(self.client.delete_collection, 'bix'))
