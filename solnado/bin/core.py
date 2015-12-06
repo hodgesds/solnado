@@ -10,6 +10,7 @@ def solnado_cmd(subparsers):
     sub = core_subparser.add_subparsers()
     add_create_subparser(sub)
     add_delete_subparser(sub)
+    add_status_subparser(sub)
 
 def add_create_subparser(subparsers):
     create_subparser = subparsers.add_parser('create')
@@ -93,4 +94,38 @@ def delete_coro(args):
 
 def delete_core(args):
     c = partial(delete_coro, args)
+    ioloop.IOLoop.current().run_sync(c)
+
+def add_status_subparser(subparsers):
+    status_subparser = subparsers.add_parser('status')
+    status_subparser.set_defaults(func=core_status)
+    status_subparser.add_argument(
+        '--host',
+        default = os.environ.get('SOLR_HOST','localhost'),
+        help    = 'Solr server',
+    )
+    status_subparser.add_argument(
+        '-p', '--port',
+        default = os.environ.get('SOLR_PORT', 8983),
+        type    = int,
+    )
+    status_subparser.add_argument(
+        'name',
+        help = 'Core name'
+    )
+
+@gen.coroutine
+def status_coro(args):
+    c = SolrClient(host=args.host)
+    collection_kwargs = {}
+
+    p = partial(
+        c.core_status,
+        **{'core': args.name}
+    )
+    s = yield gen.Task(p)
+    print(s.body)
+
+def core_status(args):
+    c = partial(status_coro, args)
     ioloop.IOLoop.current().run_sync(c)
