@@ -29,6 +29,14 @@ Query a collection
 
     solnado search foo "*"
 
+Create a core:
+
+    solnado core create foo
+
+Delete a core:
+
+    solnado core delete foo
+
 License
 -------
 
