@@ -164,7 +164,7 @@ class SolrClient(object):
         :arg req_kwargs:   Optional tornado HTTPRequest kwargs
         :arg wt:           Response format: 'json' or 'xml'
         """
-        url = self.mk_url('solr', collection, 'update', 'json', 'docs',
+        url = self.mk_url('solr', collection, 'update',
             **{'indent':indent, 'wt':wt}
         )
         self._post_json(url, docs, req_kwargs=req_kwargs,
