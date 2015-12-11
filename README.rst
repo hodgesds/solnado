@@ -1,13 +1,78 @@
 Tornado Solr Client
-===================
+-------------------
 
 Tornado http client for Solr 5.X.X.
+
+Documentation
+-------------
+http://solnado.readthedocs.org/en/latest/
+
+Example
+-------
+Creating a collection and adding a document:
+
+.. code-block:: python
+
+    from functools import partial
+    from solnado   import SolrClient
+    from tornado   import ioloop, gen
+    
+    c = SolrClient()
+    
+    @gen.coroutine
+    def create_core():
+        p = partial(
+            c.core_create,
+            'foo',
+        )
+        res = yield gen.Task(p)
+        raise gen.Return(res)
+    
+    @gen.coroutine
+    def create_collection():
+        p = partial(
+            c.create_collection,
+            'foo',
+        )
+        res = yield gen.Task(p)
+        raise gen.Return(res)
+
+    @gen.coroutine
+    def index_documents(docs):
+        p = partial(
+           c.add_json_documents,
+           'foo',
+           docs,
+           **{'commitWithin': 0}
+        )
+        res = yield gen.Task(p)
+        raise gen.Return(res)
+
+    @gen.coroutine
+    def main_coro():
+        yield create_core()
+        yield create_collection()
+        res = yield index_documents([
+            {
+                'id':'123',
+                'Title': 'A tale of two documents',
+            },{
+                'id': '456',
+                'Title': 'It was the best of times',
+        }])
+    
+        print res.body, res.code
+    
+    
+    ioloop.IOLoop.instance().run_sync(main_coro)
+
 
 CLI
 ---
 Solnado provides a simple to use API to interact with Solr.
 
 Use the following environment variables:
+
 
     export SOLR_HOST=localhost
 
@@ -65,8 +130,5 @@ Build status
 .. image:: https://travis-ci.org/hodgesds/solnado.svg?branch=master
     :target: https://travis-ci.org/hodgesds/solnado
 
-Documentation
--------------
-http://solnado.readthedocs.org/en/latest/
 
 
