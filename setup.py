@@ -58,6 +58,8 @@ setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Database :: Database Engines/Servers",
+        "Topic :: Text Processing :: Indexing",
     ],
     install_requires=install_requires,
 
