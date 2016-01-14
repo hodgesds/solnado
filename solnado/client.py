@@ -80,10 +80,10 @@ class SolrClient(object):
     def query(self,
             collection,
             q,
-            callback    = None,
-            indent      = 'off',
-            req_kwargs  = {},
-            wt          = 'json'
+            callback   = None,
+            indent     = 'off',
+            req_kwargs = {},
+            wt         = 'json'
         ):
 
         """
@@ -261,11 +261,11 @@ class SolrClient(object):
         :arg wt:         Response format: 'json' or 'xml'
         """
         kw = {
-            'action':      'CREATE',
-            'indent':      indent,
-            'name':        name,
-            'schema':      schema,
-            'wt':          wt,
+            'action': 'CREATE',
+            'indent': indent,
+            'name':   name,
+            'schema': schema,
+            'wt':     wt,
         }
 
         if config:
@@ -281,10 +281,10 @@ class SolrClient(object):
 
     def core_reload(self,
         core,
-        callback     = None,
-        indent       = 'off',
-        req_kwargs   = {},
-        wt           = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         `reload <https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-RELOAD>`_
@@ -312,10 +312,10 @@ class SolrClient(object):
     def core_rename(self,
         core,
         other,
-        callback     = None,
-        indent       = 'off',
-        req_kwargs   = {},
-        wt           = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         `rename <https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-RENAME>`_
@@ -344,10 +344,10 @@ class SolrClient(object):
     def core_swap(self,
         core,
         other,
-        callback     = None,
-        indent       = 'off',
-        req_kwargs   = {},
-        wt           = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         `swap <https://cwiki.apache.org/confluence/display/solr/CoreAdmin+API#CoreAdminAPI-SWAP>`_
@@ -456,10 +456,10 @@ class SolrClient(object):
 
     def delete_configset(self,
         name,
-        callback      = None,
-        indent        = 'off',
-        req_kwargs    = {},
-        wt            = 'json'
+        callback   = None,
+        indent     = 'off',
+        req_kwargs = {},
+        wt         = 'json'
     ):
         """
         `Configsets <https://cwiki.apache.org/confluence/display/solr/ConfigSets+API>`_
@@ -473,10 +473,10 @@ class SolrClient(object):
         url = self.mk_url(
             'admin', 'configs',
             **{
-                'action':        'DELETE',
-                'name':          name,
-                'indent':        indent,
-                'wt':            wt
+                'action': 'DELETE',
+                'name':   name,
+                'indent': indent,
+                'wt':     wt
             }
         )
 
@@ -500,9 +500,9 @@ class SolrClient(object):
         url = self.mk_url(
             'admin', 'configs',
             **{
-                'action':        'LIST',
-                'indent':        indent,
-                'wt':            wt
+                'action': 'LIST',
+                'indent': indent,
+                'wt':     wt
             }
         )
 

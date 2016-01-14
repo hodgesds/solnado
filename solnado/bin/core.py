@@ -51,8 +51,8 @@ def create_coro(args):
         c.core_create,
         args.name,
         **{
-            'config':            args.conf_file,
-            'instance_dir':      args.instance_dir,
+            'config':       args.conf_file,
+            'instance_dir': args.instance_dir,
         }
     )
     s = yield gen.Task(p)
