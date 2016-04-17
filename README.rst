@@ -73,34 +73,51 @@ Solnado provides a simple to use API to interact with Solr.
 
 Use the following environment variables:
 
+.. code-block:: bash
 
     export SOLR_HOST=localhost
-
     export SOLR_PORT=8983
+
 
 To get the current solr status:
 
+.. code-block:: bash
+
     solnado status
 
+
 Create a collection:
+
+.. code-block:: bash
 
     solnado collection create foo
 
 Delete a collection:
 
+.. code-block:: bash
+
     solnado collection delete foo
 
+
 Query a collection
+
+.. code-block:: bash
 
     solnado search foo "*"
 
 Create a core:
 
+.. code-block:: bash
+
     solnado core create foo
+
 
 Delete a core:
 
+.. code-block:: bash
+
     solnado core delete foo
+
 
 License
 -------
